@@ -47,12 +47,8 @@
       ];
 
       class Card extends React.Component {
-        constructor(props) {
-          super(props);
-        }
-
         render() {
-          const { date, username, imageurl, text } = this.props;
+          const { date, username, imageurl, text } = this.props.item;
           return (
             <div className="card">
               <div className="head">
@@ -73,21 +69,9 @@
       }
 
       class Comment extends React.Component {
-        constructor() {
-          super();
-        }
         render() {
           return records.map((item, index) => {
-            const { username, text, date, imageurl } = item;
-            return (
-              <Card
-                key={index}
-                username={username}
-                text={text}
-                imageurl={imageurl}
-                date={date}
-              />
-            );
+            return <Card key={index} item={item} />;
           });
         }
       }

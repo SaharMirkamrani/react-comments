@@ -46,7 +46,8 @@
         },
       ];
 
-      function Card({ imageurl, username, date, text }) {
+      const Card = (props) => {
+        const { imageurl, username, date, text } = props.item;
         return (
           <div className="card">
             <div className="head">
@@ -63,19 +64,11 @@
             <div className="date">{date}</div>
           </div>
         );
-      }
+      };
 
       function Comments() {
         const comments = records.map((item, index) => {
-          const { date, username, text, imageurl } = item;
-          return (
-            <Card key={index}
-              date={date}
-              username={username}
-              text={text}
-              imageurl={imageurl}
-            />
-          );
+          return <Card item={item} key={index} />;
         });
         return comments;
       }
